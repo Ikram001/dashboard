@@ -1,4 +1,30 @@
 import { useState, useEffect } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
+
+// Fake data
+const salesData = [
+  { month: "Jan", sales: 4000 },
+  { month: "Feb", sales: 3000 },
+  { month: "Mar", sales: 5000 },
+  { month: "Apr", sales: 2000 },
+  { month: "May", sales: 7000 },
+  { month: "Jun", sales: 6000 },
+];
+
+const userData = [
+  { name: "Admins", value: 400 },
+  { name: "Customers", value: 800 },
+  { name: "Guests", value: 80 },
+];
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -74,11 +100,60 @@ function App() {
         )}
 
         <main className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Welcome Admin!</h2>
-          <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700" : "bg-gray-200"}`}>
-            stats
-          </div>
-        </main>
+  <h2 className="text-xl font-semibold mb-4">Welcome Admin!</h2>
+
+ 
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-black"}`}>
+      <p>Total Users</p>
+      <p className="text-2xl">1280</p>
+    </div>
+    <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-black"}`}>
+      <p>Orders Today</p>
+      <p className="text-2xl">312</p>
+    </div>
+    <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-black"}`}>
+      <p>Revenue</p>
+      <p className="text-2xl">$9,560</p>
+    </div>
+    <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-black"}`}>
+      <p>Pending Tasks</p>
+      <p className="text-2xl">17</p>
+    </div>
+  </div>
+
+
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-black"}`}>
+      <p className="mb-4">Monthly Sales</p>
+      <BarChart width={300} height={200} data={salesData}>
+        <XAxis dataKey="month" />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="sales" fill="#3B82F6" />
+      </BarChart>
+    </div>
+
+    <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-black"}`}>
+      <p className="mb-4">User Distribution</p>
+      <PieChart width={300} height={200}>
+        <Pie
+          data={userData}
+          cx="50%"
+          cy="50%"
+          outerRadius={70}
+          dataKey="value"
+        >
+          <Cell fill="#10B981" />
+          <Cell fill="#F59E0B" />
+          <Cell fill="#EF4444" />
+        </Pie>
+        <Tooltip />
+      </PieChart>
+    </div>
+  </div>
+</main>
+
       </div>
     </div>
   );
