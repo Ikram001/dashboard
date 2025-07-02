@@ -76,7 +76,7 @@ function App() {
         <main className="p-6">
           <h2 className="text-xl font-semibold mb-4">Welcome Admin!</h2>
           <div className={`rounded-lg p-4 ${darkMode ? "bg-gray-700" : "bg-gray-200"}`}>
-            This is your dashboard overview. Use this space to display metrics and updates.
+            stats
           </div>
         </main>
       </div>
